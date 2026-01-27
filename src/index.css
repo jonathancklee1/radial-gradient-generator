@@ -1,25 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import "tailwindcss";
-@plugin "daisyui" {
-    themes:
-        light --default,
-        dark --prefersdark,
-        pastel;
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes:
+    light --default,
+    dark --prefersdark,
+    pastel;
 }
 
 @theme {
-    --font-coiny: "Coiny", sans-serif;
+  --font-coiny: 'Coiny', sans-serif;
 }
 :root {
-    font-family: "roboto", system-ui;
-    line-height: 1.5;
-    font-weight: 400;
+  font-family: 'roboto', system-ui;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-    color: #ffffff;
+  color: #ffffff;
 }
