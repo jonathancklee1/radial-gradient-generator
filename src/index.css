@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Coiny&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes:
+        light --default,
+        dark --prefersdark,
+        pastel;
+}
 
 @theme {
     --font-coiny: "Coiny", sans-serif;
