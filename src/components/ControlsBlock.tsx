@@ -6,7 +6,7 @@ import Slider from './Slider';
 export default function ControlsBlock() {
     const { gradient, setX, setY, addColour } = useGradientStore();
     return (
-        <div className="bg-op mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-white/35 bg-clip-padding p-3 text-center backdrop-blur-lg backdrop-filter md:p-8">
+        <div className="glassmorphism mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-clip-padding pt-4 text-center shadow-xl md:p-8">
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
             <h3>Change the gradient via these settings</h3>
             <div className="flex w-full flex-col gap-4 rounded-2xl p-4 md:flex-row md:gap-8">
@@ -26,7 +26,7 @@ export default function ControlsBlock() {
                             index={index}
                         />
                     ))}
-                    <button className="btn btn-primary mt-4" onClick={() => addColour()}>
+                    <button className="btn glassmorphism mt-2" onClick={() => addColour()}>
                         Add Colour
                     </button>
                 </div>

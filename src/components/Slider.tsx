@@ -11,7 +11,7 @@ export default function Slider({ property, value, handleChange }: SliderProps) {
         <div className="flex flex-col">
             <div className="flex content-center justify-between">
                 {isHex ? (
-                    <div className="cursor-pointer rounded-2xl border-2 border-black bg-gray-400 p-2 text-left font-bold">
+                    <div className="cursor-pointer rounded-2xl border-2 border-gray-500 bg-white/80 p-2 text-left font-bold text-gray-500">
                         {property?.toUpperCase()}
                     </div>
                 ) : (
@@ -35,7 +35,7 @@ export default function Slider({ property, value, handleChange }: SliderProps) {
                 min={0}
                 max="100"
                 value={value}
-                className="range mt-2 w-full [--range-bg:orange] [--range-fill:0] [--range-thumb:blue]"
+                className="range mt-2 w-full [--range-bg:rgba(255,255,255,0.7)] [--range-fill:0] [--range-thumb:orange]"
                 onChange={(e) => {
                     handleChange(Number(e.target.value));
                 }}

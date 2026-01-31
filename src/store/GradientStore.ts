@@ -17,6 +17,7 @@ interface GradientStore {
     setY: (value: number) => void;
     setShape: (shape: ShapeOption) => void;
     removeColour: (index: number) => void;
+    getCssString: () => string;
 }
 
 const useGradientStore = create<GradientStore>((set) => ({
@@ -85,5 +86,12 @@ const useGradientStore = create<GradientStore>((set) => ({
                 colours: state.gradient.colours.filter((_, arrIndex) => arrIndex !== index),
             },
         })),
+    getCssString: (): string => {
+        const gradient = useGradientStore.getState();
+        const { gradient: g } = gradient;
+        return `radial-gradient(${g.shape} at ${g.position.x}% ${g.position.y}%, ${g.colours
+            .map((colour) => `${colour.hex} ${colour.pos}%`)
+            .join(', ')})`;
+    },
 }));
 export default useGradientStore;

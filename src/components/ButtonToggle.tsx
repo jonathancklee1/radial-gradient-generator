@@ -1,29 +1,29 @@
 import useGradientStore from '../store/GradientStore';
 
 export default function ButtonToggle() {
-  const { gradient, setShape } = useGradientStore();
-  return (
-    <>
-      <p className="text-left font-bold">Shape</p>
-      <div className="flex w-full gap-4">
-        <button
-          className={`btn btn-soft btn-primary ${gradient.shape === 'ellipse' ? 'btn-active' : null} flex-1`}
-          onClick={() => {
-            setShape('ellipse');
-          }}
-        >
-          Ellipse
-        </button>
-        <div className="divider divider-horizontal m-0"></div>
-        <button
-          className={`btn btn-soft btn-secondary ${gradient.shape === 'circle' ? 'btn-active' : null} flex-1`}
-          onClick={() => {
-            setShape('circle');
-          }}
-        >
-          Circle
-        </button>
-      </div>
-    </>
-  );
+    const { gradient, setShape } = useGradientStore();
+    return (
+        <>
+            <p className="mb-2 text-left font-bold">Shape</p>
+            <div className="flex w-full gap-4">
+                <button
+                    className={`btn glassmorphism border-black/20 text-black/70 ${gradient.shape === 'ellipse' ? 'btn-active inset-shadow-sm' : 'border-gray-100 text-gray-400 shadow-sm'} flex-1`}
+                    onClick={() => {
+                        setShape('ellipse');
+                    }}
+                >
+                    Ellipse
+                </button>
+                <div className="divider divider-horizontal m-0"></div>
+                <button
+                    className={`btn glassmorphism border-black/20 text-black/70 ${gradient.shape === 'circle' ? 'btn-active inset-shadow-sm' : 'border-gray-100 text-gray-400 shadow-sm'} flex-1`}
+                    onClick={() => {
+                        setShape('circle');
+                    }}
+                >
+                    Circle
+                </button>
+            </div>
+        </>
+    );
 }

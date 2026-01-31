@@ -16,7 +16,7 @@ export default function ColourBlock({ colour, value, index }: ColourBlockProps) 
                 style={{ background: colour }}
             >
                 <button
-                    className="btn btn-square absolute top-3 left-1/2 ml-auto -translate-x-1/2 transform rounded-2xl hover:bg-white"
+                    className="btn btn-square glassmorphism absolute top-3 left-1/2 ml-auto -translate-x-1/2 transform rounded-2xl border-gray-500 hover:bg-white"
                     onClick={() => removeColour(index)}
                 >
                     <Trash />
