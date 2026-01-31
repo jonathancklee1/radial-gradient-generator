@@ -10,7 +10,7 @@ export default function ControlsBlock() {
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
             <h3>Change the gradient via these settings</h3>
             <div className="flex w-full flex-col gap-4 rounded-2xl p-4 md:flex-row md:gap-8">
-                <div className="flex-1 rounded-2xl border-2 border-white p-4 backdrop-blur-3xl">
+                <div className="h-fit flex-1 rounded-2xl border-2 border-white p-4 backdrop-blur-3xl">
                     <ButtonToggle />
                     <div className="mt-4 flex flex-col gap-2 md:order-3">
                         <Slider property="X" value={gradient.position.x} handleChange={setX} />

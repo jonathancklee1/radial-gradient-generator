@@ -23,8 +23,8 @@ interface GradientStore {
 const useGradientStore = create<GradientStore>((set) => ({
     gradient: {
         colours: [
-            { hex: '#ffffff', pos: 50 },
-            { hex: '#000000', pos: 50 },
+            { hex: getRandomHex(), pos: 50 },
+            { hex: getRandomHex(), pos: 50 },
         ],
         position: { x: 50, y: 50 },
         shape: 'ellipse',
