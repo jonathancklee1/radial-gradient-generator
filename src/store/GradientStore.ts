@@ -18,6 +18,7 @@ interface GradientStore {
     setShape: (shape: ShapeOption) => void;
     removeColour: (index: number) => void;
     getCssString: () => string;
+    changeColourHex: (hex: string, index: number) => void;
 }
 
 const useGradientStore = create<GradientStore>((set) => ({
@@ -93,5 +94,22 @@ const useGradientStore = create<GradientStore>((set) => ({
             .map((colour) => `${colour.hex} ${colour.pos}%`)
             .join(', ')})`;
     },
+    changeColourHex: (hex: string, index: number) =>
+        set((state) => {
+            console.log('Changing colour at index', index, 'to', hex);
+            const newColourArray = state.gradient.colours.map((colour, arrIndex) => {
+                if (index === arrIndex) {
+                    return { hex: hex, pos: colour.pos };
+                } else {
+                    return colour;
+                }
+            });
+            return {
+                gradient: {
+                    ...state.gradient,
+                    colours: newColourArray,
+                },
+            };
+        }),
 }));
 export default useGradientStore;

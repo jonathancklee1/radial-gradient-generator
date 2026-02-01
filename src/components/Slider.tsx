@@ -2,18 +2,22 @@ interface SliderProps {
     property?: string;
     value: number;
     handleChange: (value: number, index?: number) => void;
+    onChangePicker?: () => void;
 }
 
-export default function Slider({ property, value, handleChange }: SliderProps) {
+export default function Slider({ property, value, handleChange, onChangePicker }: SliderProps) {
     const isHex = property?.startsWith('#');
 
     return (
-        <div className="flex flex-col">
+        <div className="relative flex flex-col">
             <div className="flex content-center justify-between">
                 {isHex ? (
-                    <div className="-translate-x-10 cursor-pointer rounded-2xl border-2 border-gray-500 bg-white/80 p-2 text-left font-bold text-gray-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                    <button
+                        className="btn -translate-x-10 cursor-pointer rounded-2xl border-2 border-gray-500 bg-white/80 p-2 text-left font-bold text-gray-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                        onClick={onChangePicker}
+                    >
                         {property?.toUpperCase()}
-                    </div>
+                    </button>
                 ) : (
                     <span className="text-left font-bold">{property} Value</span>
                 )}
