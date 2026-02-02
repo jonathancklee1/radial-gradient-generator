@@ -1,3 +1,5 @@
+import useGradientStore from '../store/GradientStore';
+
 interface SliderProps {
     property?: string;
     value: number;
@@ -7,13 +9,13 @@ interface SliderProps {
 
 export default function Slider({ property, value, handleChange, onChangePicker }: SliderProps) {
     const isHex = property?.startsWith('#');
-
+    const { gradient } = useGradientStore();
     return (
         <div className="relative flex flex-col">
             <div className="flex content-center justify-between">
                 {isHex ? (
                     <button
-                        className="btn -translate-x-10 cursor-pointer rounded-2xl border-2 border-gray-500 bg-white/80 p-2 text-left font-bold text-gray-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                        className="btn glass-dark -translate-x-10 cursor-pointer rounded-2xl border-2 border-gray-500 p-2 text-left font-bold text-white opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
                         onClick={onChangePicker}
                     >
                         {property?.toUpperCase()}
@@ -40,7 +42,12 @@ export default function Slider({ property, value, handleChange, onChangePicker }
                 min={0}
                 max="100"
                 value={value}
-                className="range mt-2 w-full [--range-bg:rgba(255,255,255,0.7)] [--range-fill:0] [--range-thumb:orange]"
+                className="range mt-2 w-full [--range-bg:rgba(255,255,255,0.7)] [--range-fill:0]"
+                style={
+                    {
+                        ['--range-thumb']: gradient.colours[0]?.hex || '#ffffff',
+                    } as React.CSSProperties
+                }
                 onChange={(e) => {
                     handleChange(Number(e.target.value));
                 }}

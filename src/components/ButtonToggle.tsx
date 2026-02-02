@@ -7,7 +7,7 @@ export default function ButtonToggle() {
             <p className="mb-2 text-left font-bold">Shape</p>
             <div className="flex w-full gap-4">
                 <button
-                    className={`btn glassmorphism border-black/20 text-black/70 ${gradient.shape === 'ellipse' ? 'btn-active inset-shadow-sm' : 'border-gray-100 text-gray-400 shadow-sm'} flex-1`}
+                    className={`btn glass-light border-black/20 ${gradient.shape === 'ellipse' ? 'btn-active border-white text-white/70 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
                     onClick={() => {
                         setShape('ellipse');
                     }}
@@ -16,7 +16,7 @@ export default function ButtonToggle() {
                 </button>
                 <div className="divider divider-horizontal m-0"></div>
                 <button
-                    className={`btn glassmorphism border-black/20 text-black/70 ${gradient.shape === 'circle' ? 'btn-active inset-shadow-sm' : 'border-gray-100 text-gray-400 shadow-sm'} flex-1`}
+                    className={`btn glass-light border-black/20 ${gradient.shape === 'circle' ? 'btn-active border-white text-white/70 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
                     onClick={() => {
                         setShape('circle');
                     }}

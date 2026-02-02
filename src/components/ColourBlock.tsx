@@ -21,7 +21,7 @@ export default function ColourBlock({ colour, value, index }: ColourBlockProps) 
             >
                 {index > 0 && (
                     <button
-                        className="btn btn-square glassmorphism absolute top-3 left-1/2 z-10 ml-auto -translate-x-1/2 -translate-y-10 transform rounded-2xl border-gray-500 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-white"
+                        className="btn btn-square glass-dark absolute top-3 left-1/2 z-10 ml-auto -translate-x-1/2 -translate-y-10 transform rounded-2xl opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
                         onClick={() => removeColour(index)}
                         ref={buttonRef}
                     >

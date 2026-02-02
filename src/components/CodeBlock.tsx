@@ -15,7 +15,7 @@ export function CodeEditor() {
         }
     };
     return (
-        <div className="mockup-code glassmorphism group relative w-full overflow-hidden bg-indigo-800/80 shadow-lg">
+        <div className="mockup-code glass-dark group relative w-full overflow-hidden bg-indigo-800/80 shadow-lg">
             <div className="p-2">
                 <pre data-prefix=">" className="flex items-start">
                     <code className="flex-1 font-mono wrap-break-word whitespace-pre-wrap">
@@ -24,7 +24,7 @@ export function CodeEditor() {
                 </pre>
             </div>
             <button
-                className="glassmorphism btn btn-outline absolute top-2 right-2 translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 hover:text-indigo-600"
+                className="glass-dark btn btn-outline absolute top-2 right-2 translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 hover:text-indigo-300"
                 onClick={copyText}
             >
                 {isCopied ? 'Copied!' : 'Copy to clipboard'}

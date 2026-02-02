@@ -1,6 +1,12 @@
 export function Trash() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="20" height="20">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 25 25"
+            width="20"
+            height="20"
+            fill="white"
+        >
             <defs>
                 <style>.cls-1</style>
             </defs>

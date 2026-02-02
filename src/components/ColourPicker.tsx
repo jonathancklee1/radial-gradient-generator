@@ -11,17 +11,18 @@ export function ColourPicker({
     colour: string;
     onClose: () => void;
     index?: number;
-    buttonRef?: RefObject<HTMLButtonElement>;
+    buttonRef?: RefObject<HTMLButtonElement | null>;
 }) {
     const { changeColourHex } = useGradientStore();
     const pickerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
+            console.log(event.target, buttonRef?.current);
             if (
                 pickerRef.current &&
                 !pickerRef.current.contains(event.target as Node) &&
-                buttonRef?.current?.contains(event.target as Node)
+                !buttonRef?.current?.contains(event.target as Node)
             ) {
                 onClose();
             }
@@ -32,7 +33,7 @@ export function ColourPicker({
     }, [onClose, buttonRef]);
 
     return (
-        <div ref={pickerRef}>
+        <div ref={pickerRef} className="z-50">
             <Sketch
                 style={{ marginLeft: 20 }}
                 color={colour}
