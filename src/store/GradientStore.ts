@@ -19,6 +19,7 @@ interface GradientStore {
     removeColour: (index: number) => void;
     getCssString: () => string;
     changeColourHex: (hex: string, index: number) => void;
+    shuffleColours?: () => void;
 }
 
 const useGradientStore = create<GradientStore>((set) => ({
@@ -108,6 +109,18 @@ const useGradientStore = create<GradientStore>((set) => ({
                 gradient: {
                     ...state.gradient,
                     colours: newColourArray,
+                },
+            };
+        }),
+    shuffleColours: () =>
+        set((state) => {
+            const newColours = state.gradient.colours.map((colour) => {
+                return { hex: getRandomHex(), pos: colour.pos };
+            });
+            return {
+                gradient: {
+                    ...state.gradient,
+                    colours: newColours,
                 },
             };
         }),

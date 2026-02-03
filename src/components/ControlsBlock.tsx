@@ -1,10 +1,11 @@
+import { Shuffle } from '../assets/Shuffle';
 import useGradientStore from '../store/GradientStore';
 import ButtonToggle from './ButtonToggle';
 import ColourBlock from './ColourBlock';
 import Slider from './Slider';
 
 export default function ControlsBlock() {
-    const { gradient, setX, setY, addColour } = useGradientStore();
+    const { gradient, setX, setY, addColour, shuffleColours } = useGradientStore();
     return (
         <div className="glass-dark mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-clip-padding pt-4 text-center shadow-xl md:p-8">
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
@@ -26,9 +27,19 @@ export default function ControlsBlock() {
                             index={index}
                         />
                     ))}
-                    <button className="btn glass-light mt-2" onClick={() => addColour()}>
-                        Add Colour
-                    </button>
+                    <div className="flex items-center justify-between gap-2">
+                        <button className="btn glass-light flex-1" onClick={() => addColour()}>
+                            Add Colour
+                        </button>
+                        <div className="tooltip" data-tip="Randomise Colours">
+                            <button
+                                className="btn glass-light w-fit text-white"
+                                onClick={shuffleColours}
+                            >
+                                <Shuffle />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
