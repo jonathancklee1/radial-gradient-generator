@@ -5,12 +5,21 @@ interface ColourObject {
     hex: string;
     pos: number;
 }
+
+interface NoiseFilter {
+    baseFrequency: number;
+    numOctaves: number;
+    visible: boolean;
+    type: 'turbulence' | 'fractalNoise';
+}
 interface GradientStore {
     gradient: {
         colours: ColourObject[];
         position: { x: number; y: number };
         shape: ShapeOption;
     };
+    noiseFilter: NoiseFilter;
+    setNoiseFilter: (filter: NoiseFilter) => void;
     addColour: () => void;
     setColourPos: (value: number, index: number) => void;
     setX: (value: number) => void;
@@ -31,6 +40,13 @@ const useGradientStore = create<GradientStore>((set) => ({
         position: { x: 50, y: 50 },
         shape: 'ellipse',
     },
+    noiseFilter: {
+        baseFrequency: 0.5,
+        numOctaves: 2,
+        visible: false,
+        type: 'turbulence',
+    },
+    setNoiseFilter: (filter: NoiseFilter) => set({ noiseFilter: filter }),
     addColour: () =>
         set((state) => ({
             gradient: {

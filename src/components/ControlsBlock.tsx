@@ -5,7 +5,8 @@ import ColourBlock from './ColourBlock';
 import Slider from './Slider';
 
 export default function ControlsBlock() {
-    const { gradient, setX, setY, addColour, shuffleColours } = useGradientStore();
+    const { gradient, setX, setY, addColour, shuffleColours, setNoiseFilter, noiseFilter } =
+        useGradientStore();
     return (
         <div className="glass-dark mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-clip-padding pt-4 text-center shadow-xl md:p-8">
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
@@ -16,6 +17,27 @@ export default function ControlsBlock() {
                     <div className="mt-4 flex flex-col gap-2 md:order-3">
                         <Slider property="X" value={gradient.position.x} handleChange={setX} />
                         <Slider property="Y" value={gradient.position.y} handleChange={setY} />
+                    </div>
+                    <div className="mt-4 flex gap-4">
+                        <p className="mb-2 text-left font-bold">Noise Filter?</p>
+                        <input
+                            type="checkbox"
+                            className="toggle"
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setNoiseFilter({
+                                        ...noiseFilter,
+                                        visible: true,
+                                    });
+                                } else {
+                                    setNoiseFilter({
+                                        ...noiseFilter,
+                                        visible: false,
+                                    });
+                                }
+                            }}
+                            style={{ backgroundColor: gradient.colours[0].hex }}
+                        />
                     </div>
                 </div>
                 <div className="glass-dark flex flex-1 flex-col gap-4 rounded-2xl border-2 border-white p-4">
