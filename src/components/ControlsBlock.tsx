@@ -5,42 +5,117 @@ import ColourBlock from './ColourBlock';
 import Slider from './Slider';
 
 export default function ControlsBlock() {
-    const { gradient, setX, setY, addColour, shuffleColours, setNoiseFilter, noiseFilter } =
-        useGradientStore();
+    const {
+        gradient,
+        setX,
+        setY,
+        addColour,
+        shuffleColours,
+        setNoiseFilter,
+        noiseFilter,
+        setShape,
+    } = useGradientStore();
+    console.log(noiseFilter);
     return (
         <div className="glass-dark mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-clip-padding pt-4 text-center shadow-xl md:p-8">
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
             <h3>Change the gradient via these settings</h3>
             <div className="flex w-full flex-col gap-4 rounded-2xl p-4 md:flex-row md:gap-8">
                 <div className="glass-dark h-fit flex-1 rounded-2xl border-2 border-white p-4">
-                    <ButtonToggle />
+                    <ButtonToggle
+                        button1={{
+                            label: 'Ellipse',
+                            handleClick: () => setShape('ellipse'),
+                            isActive: gradient.shape === 'ellipse',
+                        }}
+                        button2={{
+                            label: 'Circle',
+                            handleClick: () => setShape('circle'),
+                            isActive: gradient.shape === 'circle',
+                        }}
+                        label="Shape"
+                    />
                     <div className="mt-4 flex flex-col gap-2 md:order-3">
                         <Slider property="X" value={gradient.position.x} handleChange={setX} />
                         <Slider property="Y" value={gradient.position.y} handleChange={setY} />
                     </div>
-                    <div className="mt-4 flex gap-4">
-                        <p className="mb-2 text-left font-bold">Noise Filter?</p>
-                        <input
-                            type="checkbox"
-                            className="toggle"
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setNoiseFilter({
-                                        ...noiseFilter,
-                                        visible: true,
-                                    });
-                                } else {
-                                    setNoiseFilter({
-                                        ...noiseFilter,
-                                        visible: false,
-                                    });
-                                }
-                            }}
-                            style={{ backgroundColor: gradient.colours[0].hex }}
-                        />
+                    <div className="mt-4 flex flex-col gap-2">
+                        <div className="flex items-center gap-4">
+                            <p className="mb-2 text-left font-bold">Noise Filter?</p>
+                            <input
+                                type="checkbox"
+                                className="toggle checked:border-white checked:text-white"
+                                onChange={(e) => {
+                                    if (e.target.checked) {
+                                        setNoiseFilter({
+                                            ...noiseFilter,
+                                            visible: true,
+                                        });
+                                    } else {
+                                        setNoiseFilter({
+                                            ...noiseFilter,
+                                            visible: false,
+                                        });
+                                    }
+                                }}
+                                style={{ backgroundColor: gradient.colours[0].hex }}
+                            />
+                        </div>
+                        <div>
+                            <div
+                                className={`flex flex-col gap-2 overflow-hidden transition-all duration-500 ease-in-out ${noiseFilter.visible ? 'max-h-80' : 'max-h-0'}`}
+                            >
+                                <ButtonToggle
+                                    button1={{
+                                        label: 'Turbulence',
+                                        handleClick: () =>
+                                            setNoiseFilter({ ...noiseFilter, type: 'turbulence' }),
+                                        isActive: noiseFilter.type === 'turbulence',
+                                    }}
+                                    button2={{
+                                        label: 'Fractal Noise',
+                                        handleClick: () =>
+                                            setNoiseFilter({
+                                                ...noiseFilter,
+                                                type: 'fractalNoise',
+                                            }),
+                                        isActive: noiseFilter.type === 'fractalNoise',
+                                    }}
+                                    label="Filter Type"
+                                />
+                                <Slider
+                                    property="Base Frequency"
+                                    value={noiseFilter.baseFrequency}
+                                    handleChange={(value) =>
+                                        setNoiseFilter({ ...noiseFilter, baseFrequency: value })
+                                    }
+                                    min={0.01}
+                                    max={1}
+                                    step={0.01}
+                                />
+                                <Slider
+                                    property="Octaves"
+                                    value={noiseFilter.numOctaves}
+                                    handleChange={(value) =>
+                                        setNoiseFilter({ ...noiseFilter, numOctaves: value })
+                                    }
+                                    min={1}
+                                    max={5}
+                                />
+                                <Slider
+                                    property="Seed"
+                                    value={noiseFilter.seed}
+                                    handleChange={(value) =>
+                                        setNoiseFilter({ ...noiseFilter, seed: value })
+                                    }
+                                    min={0}
+                                    max={10}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="glass-dark flex flex-1 flex-col gap-4 rounded-2xl border-2 border-white p-4">
+                <div className="glass-dark flex h-fit flex-1 flex-col gap-4 rounded-2xl border-2 border-white p-4">
                     {gradient.colours.map((colour, index) => (
                         <ColourBlock
                             key={index}

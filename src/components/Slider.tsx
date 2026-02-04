@@ -5,9 +5,20 @@ interface SliderProps {
     value: number;
     handleChange: (value: number, index?: number) => void;
     onChangePicker?: () => void;
+    min?: number;
+    max?: number;
+    step?: number;
 }
 
-export default function Slider({ property, value, handleChange, onChangePicker }: SliderProps) {
+export default function Slider({
+    property,
+    value,
+    handleChange,
+    onChangePicker,
+    min = 0,
+    max = 100,
+    step = 1,
+}: SliderProps) {
     const isHex = property?.startsWith('#');
     const { gradient } = useGradientStore();
     return (
@@ -39,9 +50,10 @@ export default function Slider({ property, value, handleChange, onChangePicker }
 
             <input
                 type="range"
-                min={0}
-                max="100"
+                min={min}
+                max={max}
                 value={value}
+                step={step}
                 className="range mt-2 w-full [--range-bg:rgba(255,255,255,0.7)] [--range-fill:0]"
                 style={
                     {

@@ -1,27 +1,37 @@
-import useGradientStore from '../store/GradientStore';
-
-export default function ButtonToggle() {
-    const { gradient, setShape } = useGradientStore();
+interface ButtonToggles {
+    label: string;
+    handleClick: () => void;
+    isActive?: boolean;
+}
+export default function ButtonToggle({
+    button1,
+    button2,
+    label,
+}: {
+    button1: ButtonToggles;
+    button2: ButtonToggles;
+    label: string;
+}) {
     return (
         <>
-            <p className="mb-2 text-left font-bold">Shape</p>
+            <p className="mb-2 text-left font-bold">{label}</p>
             <div className="flex w-full gap-4">
                 <button
-                    className={`btn glass-light border-black/20 ${gradient.shape === 'ellipse' ? 'btn-active border-white text-white/70 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
+                    className={`btn glass-light border-black/20 ${button1.isActive ? 'btn-active border-white text-white/90 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
                     onClick={() => {
-                        setShape('ellipse');
+                        button1.handleClick();
                     }}
                 >
-                    Ellipse
+                    {button1.label}
                 </button>
                 <div className="divider divider-horizontal m-0"></div>
                 <button
-                    className={`btn glass-light border-black/20 ${gradient.shape === 'circle' ? 'btn-active border-white text-white/70 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
+                    className={`btn glass-light border-black/20 ${button2.isActive ? 'btn-active border-white text-white/90 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
                     onClick={() => {
-                        setShape('circle');
+                        button2.handleClick();
                     }}
                 >
-                    Circle
+                    {button2.label}
                 </button>
             </div>
         </>

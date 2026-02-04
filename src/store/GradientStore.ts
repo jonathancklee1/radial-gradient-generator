@@ -11,6 +11,7 @@ interface NoiseFilter {
     numOctaves: number;
     visible: boolean;
     type: 'turbulence' | 'fractalNoise';
+    seed: number;
 }
 interface GradientStore {
     gradient: {
@@ -45,6 +46,7 @@ const useGradientStore = create<GradientStore>((set) => ({
         numOctaves: 2,
         visible: false,
         type: 'turbulence',
+        seed: 0,
     },
     setNoiseFilter: (filter: NoiseFilter) => set({ noiseFilter: filter }),
     addColour: () =>

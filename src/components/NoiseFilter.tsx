@@ -9,6 +9,7 @@ export function NoiseFilter() {
                     type={noiseFilter?.type || 'turbulence'}
                     baseFrequency={noiseFilter?.baseFrequency || 0.5}
                     numOctaves={noiseFilter?.numOctaves || 2}
+                    seed={noiseFilter?.seed || 0}
                     result="turbulence"
                 />
             </filter>
