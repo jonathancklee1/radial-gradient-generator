@@ -115,7 +115,6 @@ const useGradientStore = create<GradientStore>((set) => ({
     },
     changeColourHex: (hex: string, index: number) =>
         set((state) => {
-            console.log('Changing colour at index', index, 'to', hex);
             const newColourArray = state.gradient.colours.map((colour, arrIndex) => {
                 if (index === arrIndex) {
                     return { hex: hex, pos: colour.pos };

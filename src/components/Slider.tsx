@@ -28,7 +28,7 @@ export default function Slider({
             <div className="flex content-center justify-between">
                 {isHex ? (
                     <button
-                        className="btn glass-dark -translate-x-10 cursor-pointer rounded-2xl border-2 border-gray-500 p-2 text-left font-bold text-white opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                        className="btn glass-dark -translate-x-10 cursor-pointer rounded-2xl border-2 border-white p-2 text-left font-bold text-white opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
                         onClick={onChangePicker}
                     >
                         {property?.toUpperCase()}

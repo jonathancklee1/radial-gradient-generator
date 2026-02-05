@@ -18,7 +18,6 @@ export function ColourPicker({
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            console.log(event.target, buttonRef?.current);
             if (
                 pickerRef.current &&
                 !pickerRef.current.contains(event.target as Node) &&
@@ -38,7 +37,6 @@ export function ColourPicker({
                 style={{ marginLeft: 20 }}
                 color={colour}
                 onChange={(color) => {
-                    console.log(index);
                     if (index !== undefined) changeColourHex(color.hex, index);
                 }}
             />

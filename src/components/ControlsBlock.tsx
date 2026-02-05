@@ -15,7 +15,6 @@ export default function ControlsBlock() {
         noiseFilter,
         setShape,
     } = useGradientStore();
-    console.log(noiseFilter);
     return (
         <div className="glass-dark mx-auto flex w-full flex-col gap-2 rounded-2xl border border-white bg-clip-padding pt-4 text-center shadow-xl md:p-8">
             <h2 className="font-roboto text-2xl font-bold">Radial Gradient CSS Generator</h2>
@@ -51,10 +50,10 @@ export default function ControlsBlock() {
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
                         <div className="flex items-center gap-4">
-                            <p className="mb-2 text-left font-bold">Noise Filter?</p>
+                            <p className="text-left font-bold">Enable Noise Filter?</p>
                             <input
                                 type="checkbox"
-                                className="toggle checked:border-white checked:text-white"
+                                className="toggle border-white/60 checked:border-white checked:text-white"
                                 onChange={(e) => {
                                     if (e.target.checked) {
                                         setNoiseFilter({
