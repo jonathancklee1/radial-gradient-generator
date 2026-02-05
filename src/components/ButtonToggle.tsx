@@ -15,7 +15,7 @@ export default function ButtonToggle({
     return (
         <>
             <p className="mb-2 text-left font-bold">{label}</p>
-            <div className="flex w-full gap-4">
+            <div className="mb-2 flex w-full gap-4">
                 <button
                     className={`btn glass-light border-black/20 ${button1.isActive ? 'btn-active border-white text-white/90 inset-shadow-sm' : 'text-black/50 shadow-sm'} flex-1`}
                     onClick={() => {

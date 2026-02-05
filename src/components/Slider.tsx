@@ -8,6 +8,7 @@ interface SliderProps {
     min?: number;
     max?: number;
     step?: number;
+    type?: string;
 }
 
 export default function Slider({
@@ -18,6 +19,7 @@ export default function Slider({
     min = 0,
     max = 100,
     step = 1,
+    type,
 }: SliderProps) {
     const isHex = property?.startsWith('#');
     const { gradient } = useGradientStore();
@@ -34,17 +36,20 @@ export default function Slider({
                 ) : (
                     <span className="text-left font-bold">{property} Value</span>
                 )}
-                <label className="input text-base-content ml-auto w-21 translate-x-10 gap-1 rounded-md font-bold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                <label
+                    className={`input text-base-content ml-auto gap-1 rounded-md font-bold ${isHex ? 'translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100' : ''} ${type ? 'w-21' : 'w-19'}`}
+                >
                     <input
                         value={value}
                         type="number"
-                        min="0"
-                        max="100"
+                        min={min}
+                        max={max}
                         onChange={(e) => {
                             handleChange(Number(e.target.value));
                         }}
+                        step={step}
                     />
-                    <div className="">%</div>
+                    <div className="">{type}</div>
                 </label>
             </div>
 

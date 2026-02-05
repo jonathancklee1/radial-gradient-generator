@@ -36,8 +36,18 @@ export default function ControlsBlock() {
                         label="Shape"
                     />
                     <div className="mt-4 flex flex-col gap-2 md:order-3">
-                        <Slider property="X" value={gradient.position.x} handleChange={setX} />
-                        <Slider property="Y" value={gradient.position.y} handleChange={setY} />
+                        <Slider
+                            property="X"
+                            value={gradient.position.x}
+                            handleChange={setX}
+                            type={'%'}
+                        />
+                        <Slider
+                            property="Y"
+                            value={gradient.position.y}
+                            handleChange={setY}
+                            type={'%'}
+                        />
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
                         <div className="flex items-center gap-4">
@@ -63,7 +73,7 @@ export default function ControlsBlock() {
                         </div>
                         <div>
                             <div
-                                className={`flex flex-col gap-2 overflow-hidden transition-all duration-500 ease-in-out ${noiseFilter.visible ? 'max-h-80' : 'max-h-0'}`}
+                                className={`flex flex-col gap-2 overflow-hidden transition-all duration-500 ease-in-out ${noiseFilter.visible ? 'max-h-90' : 'max-h-0'}`}
                             >
                                 <ButtonToggle
                                     button1={{

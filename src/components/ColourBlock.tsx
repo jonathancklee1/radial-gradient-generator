@@ -33,6 +33,9 @@ export default function ColourBlock({ colour, value, index }: ColourBlockProps) 
                     value={value}
                     handleChange={(value) => setColourPos(value, index)}
                     onChangePicker={() => setShowPicker(!showPicker)}
+                    type={'%'}
+                    min={0}
+                    max={100}
                 />
             </div>
 
