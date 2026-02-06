@@ -2,7 +2,7 @@
 
 A generator for radial gradients makes it easier to create box shadows for web development interactively and visually.     
 
-Click here to visit the site: [https://jonathancklee1.github.io/learn-flags/](https://jonathancklee1.github.io/shadow-generator/)
+Click here to visit the site:[https://jonathancklee1.github.io/radial-gradient-generator/](https://jonathancklee1.github.io/radial-gradient-generator/)
 
 ## Features
 
